@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lexend+Mega&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="store.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Login Page</title>
+  <script type="text/javascript"></script>
+</head>
+<body>
+
+<div class="container">
+    <div class="navbar">
+        <div class="logo">
+            <img src="icon.png">
+        </div>
+        <nav>
+            <ul id="MenuItems">
+                <li><a href="index.html">Home</a> </li>
+                <!-- <li><a href="ps4games.html">Playstation</a> </li>
+                <li><a href="xbox.html">Xbox</a></li>
+                <li><a href="">Nintendo</a></li>
+                <li><a href="">PC</a></li> -->
+                <li><a href="login.html">Sign Up/In</a></li>
+
+            </ul>
+        </nav>
+        <!-- <a href="cart.html"><img src="https://pngimg.com/uploads/shopping_cart/shopping_cart_PNG38.png" width="30px" height="30px" ></a>
+        <img src="menu.png" class="menu-icon" onclick="menutoggle()"> -->
+    </div>
+</div>
+
+<!-- acc page-->
+<div class="acc-pg">
+    <div class="container">
+        <div class="row">
+            <div class="col-2">
+                <img src="https://pyxis.nymag.com/v1/imgs/cbf/4a2/ec7456fedf57d61fc8e52cb51c3acb47dd-video-game-consoles-for-you-lede.2x.rsocial.w600.jpg" width="100%">
+            </div>
+            <div class="col-2">
+               <div class="form-container">
+                    <div class="form--btn">
+                        <span onclick="login()">Login</span>
+                        <span onclick="register()">Register</span>
+                        <hr id="Indicator">
+                    </div>
+                    <form id="LoginForm" action="login.php" method="post">
+                        <input type="email" placeholder="Email" name="email">
+                        <input type="password" placeholder="Password" name="password">
+                        <button type="submit" name="login" class="btn">Login</button>
+                        <a href="">Forgot password</a>
+                    </form>
+
+                    <form id="RegForm" name="contactForm" action="register.php" method="post" onsubmit="return validateForm()">
+                        <input type="text" placeholder="Username" name="username">
+                        <div class="error" id="nameErr"></div>
+                        <input type="email" placeholder="Email" name="email">
+                        <div class="error" id="emailErr"></div>
+                        <input type="number" placeholder="Phone Number" name="phonenumber">
+                        <div class="error" id="numberErr"></div>
+                        <input type="password" placeholder="Password" name="password">
+                        <div class="error" id="passwordErr"></div>
+                        <button type="submit" name="register" class="btn">Register</button>
+                    </form>
+               </div>
+            </div>
+        </div>
+    </div>
+</div>
+    
+<!----footer------>
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col-1">
+                    <h3>Download Our App</h3>
+                    <p>Available on Apple App Store and Google Play</p>
+                    <div class="app-logo">
+                        <img src="http://assets.stickpng.com/images/5a902db97f96951c82922874.png">
+                        <img src="http://assets.stickpng.com/images/5a902dbf7f96951c82922875.png">
+                    </div>
+                </div>
+                <div class="footer-col-2">
+                    <img src="https://cdn.akamai.steamstatic.com/steam/apps/1228570/header.jpg?t=1593725286">
+                    <p>Making Game delivery easy</p>
+                </div>
+                <div class="footer-col-3">
+                    <h3>Useful Links</h3>
+                    <ul>
+                        <li>About Us</li>
+                        <li>Return Policy</li>
+                        <li>Customer Service</li>
+                        <li>Locate store near you</li>
+                    </ul>
+                </div>
+                <div class="footer-col-4">
+                    <h3>By</h3>
+                    <ul>
+                        <li>Basit Ali</li>
+                        <li>Rehan Riaz</li>
+                        <li>Naqeeb Nizar</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <p class="copyright">Copyright</p>
+        </div>
+    </div>
+
+    <!-- script for menu -->
+    <script language="JavaScript">
+        var MenuItems = document.getElementById("MenuItems");
+
+        MenuItems.style.maxHeight = "0px";
+        function menutoggle(){
+            var MenuItems = document.getElementById("MenuItems");
+            if(MenuItems.style.maxHeight == "0px")
+            {
+                MenuItems.style.maxHeight = "200px";
+
+            }
+            else{
+                MenuItems.style.maxHeight = "0px";
+            }
+        }
+    </script>
+    <!-- js for toggle form -->
+    <script>
+        var LoginForm = document.getElementById("LoginForm");
+        var RegForm = document.getElementById("RegForm");
+        var Indicator = document.getElementById("Indicator");
+
+            function register(){
+                RegForm.style.transform = "translateX(0px)"
+                LoginForm.style.transform = "translateX(0px)"
+                Indicator.style.transform = "translateX(100px)"
+            }
+
+            function login(){
+                RegForm.style.transform = "translateX(300px)"
+                LoginForm.style.transform = "translateX(300px)"
+                Indicator.style.transform = "translateX(0px)"
+            }
+
+    </script>
+
+    <!-- error validation js -->
+    <script>
+        function printError( elemId, hintMsg) {
+            document.getElementById(elemId).innerHTML = hintMsg;
+        }
+
+        function validateForm() {
+            var name = document.forms.contactForm.name.value;
+            var password = document.forms.contactForm.password.value;
+            var email = document.forms.contactForm.email.value;
+            var nameErr = (emailErr = passwordErr = true);
+            var phonenumber = document.forms.contactForm.number.value;
+        
+            //Validate name
+            if (name == "") {
+            printError("nameErr", "CANNOT BE EMPTY");
+                } 
+            else {
+            var regex = /^[a-zA-Z\s]+$/;
+            if (regex.test(name) === false) {
+                printError("nameErr", "ENTER A VALID NAME");
+                } 
+            else {
+                printError("nameErr", "");
+                nameErr = false;
+                }
+            }
+
+            // Validate email address
+            if (email == "") {
+            printError("emailErr", "CANNOT BE EMPTY");
+            // alert("Name must be filled out");
+                }
+            else {
+            // Regular expression for basic email validation
+            var regex = /^\S+@\S+\.\S+$/;
+            if (regex.test(email) === false) {
+                printError("emailErr", "ENTER A VALID EMAIL");
+                } 
+            else {
+                printError("emailErr", "");
+                emailErr = false;
+                }
+            }
+
+            if (phonenumber == "") {
+            printError("numberErr", "CANNOT BE EMPTY");
+            }
+
+            // Validate password address
+            if (password == "") {
+            printError("passwordErr", "CANNOT BE EMPTY");
+                } 
+            else {
+            // Regular expression for basic password validation
+            var regex = /^\S+\S+\S+$/;
+            // console.log(regex.test(password));
+            if (regex.test(password) === false) {
+                printError("passwordErr", "ENTER VALID PASSWORD");
+                } 
+            else {
+                printError("passwordErr", "");
+                passwordErr = false;    
+                }
+            }
+
+            if ((nameErr || emailErr || passwordErr || numberError) == true) {
+                // console.log(nameErr, emailErr, passwordErr);
+                return false;
+                } 
+                else {
+                // Creating a string from input data for preview
+                console.log("done");
+                var dataPreview =
+                    "You've entered the following details: \n" +
+                    "Full Name: " +
+                    name +
+                    "\n" +
+                    "Email Address: " +
+                    email +
+                    "\n" +
+                    "Number: " +
+                    number +
+                    "\n" +
+                    "Password: " +
+                    password +
+                    "\n";
+
+                alert(dataPreview);
+                }
+            }   
+
+    </script>
+</body>
+</html>
